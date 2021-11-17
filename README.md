@@ -29,13 +29,17 @@ project-name/
 
 ## Instructions
 
-Install Yeoman globally: ```npm install -g yo 
+Install Yeoman globally: ```bash
+
+npm install -g yo 
 
 sudo npm install -g yo```
 
 <br>
 
-Then install the Bootstrap boilerplate generator globally: ```npm install -g generator-bootstrap-boilerplate-template
+Then install the Bootstrap boilerplate generator globally: ```bash
+
+npm install -g generator-bootstrap-boilerplate-template
 
 sudo npm install -g generator-bootstrap-boilerplate-template```
 
@@ -59,4 +63,4 @@ Thats it. You are now ready to start coding in Bootstrap :computer:
 
 <br>
 
-### **More website templates coming soon, stay tuned**
+#### **More website templates coming soon, stay tuned**
