@@ -1,6 +1,10 @@
 
 <br>
 
+<a href="https://www.npmjs.com/package/generator-bootstrap-boilerplate-template"><img src="https://nodei.co/npm/generator-bootstrap-boilerplate-template.png?downloadRank=true&downloads=true&downloadRank=true&stars=true" /></a>
+
+<br>
+
 A Yeoman generator that creates the file structure for your bootstrap project.
 
 
