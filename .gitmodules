@@ -1,3 +1,4 @@
+
 [submodule "generators/app/templates"]
 	path = generators/app/templates
 	url = https://github.com/TheCoderGuru/bootstrap_template.git
