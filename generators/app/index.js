@@ -1,118 +1,115 @@
-var Generator = require("yeoman-generator");
+'use strict';
+const Generator = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const mkdirp = require('mkdirp');
 
-var chalk = require('chalk');
+module.exports = class extends Generator {
+  prompting() {
+    // Have Yeoman greet the user.
+    this.log(
+      yosay(
+        `Welcome to the great ${chalk.red('generator-thecoderguru')} generator!`
+      )
+    );
 
-module.exports = class extends Generator{
+    const prompts = [
+    {
+        type: 'input', 
+        name: 'name',
+        message: 'What would you like to name your website project?'
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'What is the description of your website project'
+    },
+    {
+        type: 'input',
+        name: 'fullname',
+        message: 'Please enter your name that you would like to be used for this project'
+    },
+    {
+        type: 'input',
+        name: 'repo',
+        message: 'Please enter the url of your repository'
+    },
+    {
+        type: 'list',
+        name: 'option',
+        choices: [ 'template_1', 'template_2' ],
+        message: 'Which website template would you like to generate?'
+    }];
 
-    async prompting(){
-
-        const answers = await this.prompt([
-        
-        {
-            
-            type: 'list',
-            
-            name: 'name',
-            
-            choices: [ 'template_1', 'template_2' ],
-            
-            message: 'What template would you like to generate?'
-        
-        }]);
-
-        if( answers.name === "template_2" ){
-
-            this.log( "Generating bootstrap_template_2" )
-
-            this.fs.copy(
-                
-                this.templatePath('bootstrap_template_2/src'),
-                
-                this.destinationPath('bootstrap_template_2/src')
-            
-            );
-            
-            this.fs.copy(
-                
-                this.templatePath('bootstrap_template_2/scss'),
-                
-                this.destinationPath('bootstrap_template_2/scss')
-            
-            );
-
-            this.fs.copy(
-                
-                this.templatePath('bootstrap_template_2/icon'),
-                
-                this.destinationPath('bootstrap_template_2/icon')
-            
-            );
-            
-            this.fs.copy(
-                
-                this.templatePath('bootstrap_template_2/package.json'),
-                
-                this.destinationPath('bootstrap_template_2/package.json')
-                
-            );
-        
-        } 
-
-        else {
-            
-            this.fs.copy(
-                
-                this.templatePath('src/index.html'),
-                
-                this.destinationPath('src/index.html')
-            
-            );
-            
-            this.fs.copy(
-                
-                this.templatePath('src/index.js'),
-                
-                this.destinationPath('src/index.js')
-            
-            );
-            
-            this.fs.copy(
-                
-                this.templatePath('scss/custom.scss'),
-                
-                this.destinationPath('scss/custom.scss')
-            
-            );
-            
-            this.fs.copy(
-                
-                this.templatePath('package.json'),
-                
-                this.destinationPath('package.json'),
-                
-                { name: this.appname }
-            
-            );
-        
-        }
-    
+    return this.prompt(prompts).then(props => {
+        this.props = props;
+    })
     }
 
-	    end() {
-		    
-            this.log( chalk.bold.green( 'Generated all the files.. Happy Bootstrapping' ) )
-            
-            this.log( ' ' )
-            
-            this.log( 'Thank you for using this generator, changes will be made to better improve your experience so do leave your valuable feedback' )
-            
-            this.log( ' ' )
 
-            this.log('Type `npm run dev` to run the development');
-            
-            this.log( ' ' )
-            
-            this.log( 'Bootstrap Boilerplate Template | TheCoderGuru' )
-        
+    writing() {
+        if( this.props.option === "template_1" ){
+            this.fs.copy( 
+                this.templatePath( 'src/index.html' ), 
+                this.destinationPath( 'src/index.html' ) 
+            );
+            this.fs.copy( 
+                this.templatePath( 'scss/custom.scss' ), 
+                this.destinationPath( 'scss/custom.scss' ) 
+            );
+
+            const pkg = require( '../../package.json')
+            pkg.name = this.props.name;
+            pkg.version = '0.1.0';
+            pkg.description = this.props.description;
+            pkg.contributors = [ `${ this.props.fullname }`]
+            pkg.dependencies = undefined;
+            pkg.devDependencies = undefined;
+            pkg.files = undefined;
+            pkg.keywords = undefined;
+            pkg.publishConfig = undefined;
+            if( this.props.repo != null && this.props.repo.trim() != '' ){
+                pkg.repository = {
+                    "type": "git",
+                    "url": `git+${this.props.repo}.git`
+                };
+                pkg.bugs = {
+                    "url": `git+${this.props.repo}/issues`
+                };
+                pkg.homepage = `${this.props/repo}#readme`;
+            }
+            else {
+                pkg.repository = undefined;
+                pkg.bugs = undefined;
+                pkg.homepage = undefined;
+            }
+            pkg['scripts'] = {
+                dev: "parcel ./src/index.html",
+                prebuild: "npx rimraf build",
+                build: "parcel build --public-url ./ ./src/index.html --dist-dir build"
+            };
+            this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+            this.log('Finished writing the package.json file')
         }
+      
+    }
+
+
+	end() {
+		    
+        this.log( chalk.bold.green( 'Generated all the files.. Happy Bootstrapping' ) )
+            
+        this.log( ' ' )
+            
+        this.log( 'Thank you for using this generator, changes will be made to better improve your experience so do leave your valuable feedback.' )
+            
+        this.log( ' ' )
+
+        this.log('Type `npm run dev` to run the development server.');
+            
+        this.log( ' ' )
+            
+        this.log( 'Bootstrap Boilerplate Template | TheCoderGuru' )
+        
+    }
 };
