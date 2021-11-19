@@ -1,0 +1,190 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+$font-family-sans-serif: 'Roboto', sans-serif;
+
+$colors: (
+
+	--background: rgb( 253, 253, 253 )
+);
+
+.bg-lighter{
+	background-color: rgba(#e4fcf9, 0.5 );
+}
+
+
+
+body{
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-image: linear-gradient( rgba( 0, 0, 0, 0.2 ), rgba( 0, 0, 0, 0.2 ) ), url( "https://images5.alphacoders.com/421/421088.jpg" );
+
+}
+
+
+
+.navbar-nav{
+
+	margin: 0px 0px 0px 500px;
+
+}
+
+
+
+.navbar-nav .nav-item{
+
+	margin: 5px 2px 2px 2px;
+	
+	
+	font-weight: 700;
+
+}
+
+
+
+i.bi.bi-search{
+	
+	margin: 13px 8px 8px 500px;
+
+}
+
+
+
+.btn-pink{
+	
+	border-radius: 25px;
+	
+	margin: 2px 2px 2px 20px;
+	
+	background-color: #ff1f5a;
+
+}
+
+
+
+.nav-link{
+	
+	padding: 6px;
+
+}
+
+
+
+.btn-center{
+
+	justify-content: center;
+	
+	margin-left: 577px;
+
+}
+
+
+
+.btn-primary{
+	
+	border-radius: 6px;
+
+	margin-top: -55px;
+
+	font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+.card img{
+
+	height: 128px;
+	
+	width: 128px;
+
+}
+
+
+
+.card{
+	
+	margin: 15px;
+
+}
+
+
+
+.container-fluid-featured h3{
+	
+	margin: 3px 3px 8px 3px;
+
+}
+
+
+.container-fluid-product h3{
+
+	color: #2470a0;
+}
+
+.container-fluid-product p{
+
+	color: rgba( white, 0.7 );
+}
+
+.btn-success{
+
+	margin: 0px 0px 47px 0px;
+
+}
+
+
+
+.card-text{
+
+	margin-top: 25px;
+}
+
+
+
+.container-fluid-product{
+
+	background-image: linear-gradient( rgba( 0, 0, 0, 0.4 ), rgba( 0, 0, 0, 0.4 ) ), url("https://www.pcclean.io/wp-content/gallery/fruit-hd-wallpapers/311171.jpg");
+	
+	margin: 12px;
+
+	padding: 24px;
+
+	border-radius: 8px;
+}
+
+
+
+.text-light-50{
+
+	opacity: 0.7;
+}
+
+
+
+i.bi.bi-play-circle{
+	
+	justify-content: center;
+	
+	margin-left: 650px;
+	
+	margin-top: 200px;
+	
+	color: rgba(white, 0.5);
+
+}
+
+
+
+.list-unstyled i{
+
+	padding: 8px;
+
+}
+
+
+
+.background-light{
+
+	opacity: 0.3;
+
+}

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 75771e58d13da0c81df47d7ede0ba6b8b7e9cd0a
 [submodule "generators/app/templates"]
 	path = generators/app/templates
 	url = https://github.com/TheCoderGuru/bootstrap_template.git

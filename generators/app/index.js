@@ -9,11 +9,7 @@ module.exports = class extends Generator {
     // Have Yeoman greet the user.
     this.log(
       yosay(
-<<<<<<< HEAD
         `Welcome to the great ${chalk.red('generator-bootstrap-boilerplate-template')} generator!`
-=======
-        `Welcome to the great ${chalk.red('generator-thecoderguru')} generator!`
->>>>>>> 75771e58d13da0c81df47d7ede0ba6b8b7e9cd0a
       )
     );
 
@@ -61,7 +57,10 @@ module.exports = class extends Generator {
                 this.templatePath( 'scss/custom.scss' ), 
                 this.destinationPath( 'scss/custom.scss' ) 
             );
-<<<<<<< HEAD
+            this.fs.copy( 
+                this.templatePath( 'package.json' ), 
+                this.destinationPath( 'package.json' ) 
+            );
         } else {
             mkdirp('bootstrap_template_2/src')
             mkdirp( 'bootstrap_template_2/scss' )
@@ -85,16 +84,9 @@ module.exports = class extends Generator {
                 this.templatePath( 'images/' ),
                 this.destinationPath( 'bootstrap_template_2/images/' ) 
             )
-        }
 
             const pkg = require( '../../package.json')
             pkg.name = this.props.name;
-            pkg.repo = this.props.repo;
-=======
-
-            const pkg = require( '../../package.json')
-            pkg.name = this.props.name;
->>>>>>> 75771e58d13da0c81df47d7ede0ba6b8b7e9cd0a
             pkg.version = '0.1.0';
             pkg.description = this.props.description;
             pkg.contributors = [ `${ this.props.fullname }`]
@@ -111,11 +103,9 @@ module.exports = class extends Generator {
                 pkg.bugs = {
                     "url": `git+${this.props.repo}/issues`
                 };
-<<<<<<< HEAD
                 pkg.homepage = `${this.props.repo}#readme`;
-=======
                 pkg.homepage = `${this.props/repo}#readme`;
->>>>>>> 75771e58d13da0c81df47d7ede0ba6b8b7e9cd0a
+
             }
             else {
                 pkg.repository = undefined;
@@ -129,10 +119,7 @@ module.exports = class extends Generator {
             };
             this.fs.writeJSON(this.destinationPath('package.json'), pkg)
             this.log('Finished writing the package.json file')
-<<<<<<< HEAD
-=======
         }
->>>>>>> 75771e58d13da0c81df47d7ede0ba6b8b7e9cd0a
       
     }
 
@@ -154,4 +141,4 @@ module.exports = class extends Generator {
         this.log( 'Bootstrap Boilerplate Template | TheCoderGuru' )
         
     }
-};
+}
